@@ -6,11 +6,14 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:19:05 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/22 14:15:12 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:21:02 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static	char	*fill_line_buf(int fd, char *left_c, char *buffer);
+static	char	*set_line(char *line_buffer);
 
 char    *get_next_line(int fd)
 {
@@ -48,4 +51,11 @@ char    *get_next_line(int fd)
 	 // buf again 0 to start string other charaters
 
 	 // stash will be freed but only the 
-	 
+static	char	*fill_line_buf(int fd, char *left_c, char *buffer)
+{
+
+}
+static	char	*set_line(char *line_buffer)
+{
+	
+}

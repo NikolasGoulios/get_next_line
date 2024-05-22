@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 19:45:15 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/22 13:48:00 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:20:13 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,5 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
-char	*fill_line_buf(int fd, char *left_c, char *buffer);
-char	*set_line(char *line_buffer);
 
 #endif
