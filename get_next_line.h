@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 19:45:15 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/22 12:23:34 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:36:35 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # include <fcntl.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
 
