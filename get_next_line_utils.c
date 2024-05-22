@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:18:52 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/22 13:37:55 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:48:02 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
   //ft_substr
-  char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	new_len;
@@ -95,4 +95,13 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		newstr[j++] = s2[i++];
 	newstr[j] = 0;
 	return (newstr);
+}
+char *fill_line_buf(int fd, char *left_c, char *buffer)
+{
+
+}
+
+char *set_line(char *line_buffer)
+{
+	
 }

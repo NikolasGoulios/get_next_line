@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 19:45:15 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/22 13:36:35 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:48:00 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,12 @@
 # include <stdio.h>
 
 char    *get_next_line(int fd);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+size_t	ft_strlen(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*fill_line_buf(int fd, char *left_c, char *buffer);
+char	*set_line(char *line_buffer);
 
 #endif
