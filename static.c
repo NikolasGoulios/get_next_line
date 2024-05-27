@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:27:32 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/22 14:21:00 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/27 13:51:08 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int fun()
  
 int main()
 {
-	// It will print as long as it lives in the program
+	//It will print as long as it lives in the program
     printf("%d ", fun());
     printf("%d ", fun());
 	printf("%d ", fun());
@@ -39,7 +39,7 @@ int main()
    -then return will be a small nonnegative number if succesfull 
    -  (-1) if somthing goes wrong with the open function !! EDGE CASE */
 
-// Here is how to test it//
+// Here is how to test it -- But we will not use it//
 /*int main()
 {
 	int fd;
