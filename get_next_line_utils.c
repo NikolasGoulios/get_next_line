@@ -6,13 +6,12 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:18:52 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/22 14:20:58 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:51:46 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-  //ft_strchr
 char	*ft_strchr(const char *s, int c)
 {
 	unsigned char	lc ;
@@ -28,7 +27,7 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *) s);
 	return (0);
 }
-  //ft_strdup
+
 char	*ft_strdup(const char *s1)
 {
 	char	*dest;
@@ -46,7 +45,7 @@ char	*ft_strdup(const char *s1)
 	dest[i] = 0;
 	return (dest);
 }
-  //ft_strlen
+
 size_t	ft_strlen(const char *s)
 {
 	int	i;
@@ -56,7 +55,7 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-  //ft_substr
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
@@ -75,7 +74,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(substr, s + start, len + 1);
 	return (substr);
 }
-  //ft_strjoin
+
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	int		i;
