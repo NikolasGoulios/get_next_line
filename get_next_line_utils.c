@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:18:52 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/27 11:51:46 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:01:51 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	if (!dest)
 		return (NULL);
-	while (s1[i])
+	while (!s1)
 	{
 		dest[i] = s1[i];
 		i++;
@@ -94,4 +94,36 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		newstr[j++] = s2[i++];
 	newstr[j] = 0;
 	return (newstr);
+}
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	srclen;
+
+	srclen = ft_strlen(src);
+	if (srclen + 1 < dstsize)
+		ft_memcpy (dst, src, srclen + 1);
+	else if (dstsize != 0)
+	{
+		ft_memcpy (dst, src, dstsize - 1);
+		dst[dstsize - 1] = 0;
+	}
+	return (srclen);
+}
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t		index;
+	char		*de;
+	char		*sr;
+
+	index = 0;
+	de = (char *)dst;
+	sr = (char *)src;
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	while (index < n)
+	{
+		de[index] = sr[index];
+		index++;
+	}
+	return (dst);
 }

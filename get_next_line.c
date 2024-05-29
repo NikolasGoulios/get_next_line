@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:19:05 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/27 23:46:39 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:04:41 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,18 @@ char *get_next_line(int fd)
 	char		*line;
 	static char	backup;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd <= 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	line = read_line(fd, buffer, backup);
+	line = read_line(fd, buffer, &backup);
 	free(buffer);
 	if (!line)
 		return (NULL);
-	backup = extract(line);
+	backup = *extract(line);
 	return (line);
 }
-
 static char	*read_line(int fd, char *buffer, char *backup)
 {
 	int		check;
@@ -54,14 +53,13 @@ static char	*read_line(int fd, char *buffer, char *backup)
 		backup = (ft_strjoin(temp, buffer));
 		if (!backup)
 			return (NULL);
-		free (temp);
+		//free (temp);
 		temp = NULL;
 		if (ft_strchr(buffer, '\n'))
 			break;
 	}
 	return (backup);
 }
-
 static char	*extract(char *line)
 {
 	int		i;
@@ -76,8 +74,6 @@ static char	*extract(char *line)
 		return (NULL);
 	temp = ft_substr(line, i + 1, ft_strlen(line) - 1);
 	if (!temp)
-		return (NULL);
-	if (!temp[0])
 	{
 		free (temp);
 		temp = NULL;
