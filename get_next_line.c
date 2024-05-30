@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:19:05 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/29 16:04:41 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/05/30 13:30:50 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*read_line(int fd, char *buffer, char *backup)
 		if (!backup)
 			return (NULL);
 		//free (temp);
-		temp = NULL;
+		//temp = NULL;
 		if (ft_strchr(buffer, '\n'))
 			break;
 	}
