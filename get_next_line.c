@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:19:05 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/30 13:30:50 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:50:05 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char *get_next_line(int fd)
 	char		*line;
 	static char	backup;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd <= 0 || BUFFER_SIZE <= 0 || read(fd,0,0) < 0)
 		return (NULL);
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
@@ -53,8 +53,6 @@ static char	*read_line(int fd, char *buffer, char *backup)
 		backup = (ft_strjoin(temp, buffer));
 		if (!backup)
 			return (NULL);
-		//free (temp);
-		//temp = NULL;
 		if (ft_strchr(buffer, '\n'))
 			break;
 	}
