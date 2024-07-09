@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:19:05 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/09 18:12:43 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/09 22:46:27 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ char *get_next_line(int fd)
 	char		*line;
 	static char	*backup;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0 || read(fd,0,0) < 0)
+	if (fd <= 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	line = read_line(fd, buffer, &backup);
@@ -35,18 +35,18 @@ char *get_next_line(int fd)
 }
 static char	*read_line(int fd, char *buffer, char *backup)
 {
-	int		check;
+	int		bytes_read;
 	char	*temp;
 
-	check = 1;
-	while (check)
+	bytes_read = 1;
+	while (bytes_read > 0)
 	{
-		check = read(fd, buffer, BUFFER_SIZE);
-		if (check == -1)
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
 			return (0);
-		else if (check == 0)
+		else if (bytes_read == 0)
 			break;
-		buffer[check] = '\0';
+		buffer[bytes_read] = '\0';
 		if (!backup)
 			backup = ft_strdup("");
 		temp = backup;
