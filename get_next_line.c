@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:19:05 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/09 17:50:05 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/09 18:12:43 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char *get_next_line(int fd)
 {
 	char		*buffer;
 	char		*line;
-	static char	backup;
+	static char	*backup;
 
 	if (fd <= 0 || BUFFER_SIZE <= 0 || read(fd,0,0) < 0)
 		return (NULL);

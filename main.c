@@ -1,3 +1,4 @@
+#include <sys/fcntl.h>
 int main()
 {
     int fd;
