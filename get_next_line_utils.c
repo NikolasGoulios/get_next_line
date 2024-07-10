@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:18:52 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/29 16:09:50 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/10 23:40:22 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	newstr[j] = 0;
 	return (newstr);
 }
+
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	srclen;
@@ -109,6 +110,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	return (srclen);
 }
+
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t		index;

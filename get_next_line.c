@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:19:05 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/09 22:46:27 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/10 23:39:05 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char	*read_line(int fd, char *buf, char *backup);
 static char	*extract(char *line);
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	char		*buffer;
 	char		*line;
@@ -33,6 +33,7 @@ char *get_next_line(int fd)
 	backup = *extract(line);
 	return (line);
 }
+
 static char	*read_line(int fd, char *buffer, char *backup)
 {
 	int		bytes_read;
@@ -45,7 +46,7 @@ static char	*read_line(int fd, char *buffer, char *backup)
 		if (bytes_read == -1)
 			return (0);
 		else if (bytes_read == 0)
-			break;
+			break ;
 		buffer[bytes_read] = '\0';
 		if (!backup)
 			backup = ft_strdup("");
@@ -54,10 +55,11 @@ static char	*read_line(int fd, char *buffer, char *backup)
 		if (!backup)
 			return (NULL);
 		if (ft_strchr(buffer, '\n'))
-			break;
+			break ;
 	}
 	return (backup);
 }
+
 static char	*extract(char *line)
 {
 	int		i;
