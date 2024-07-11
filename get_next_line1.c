@@ -5,63 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/09 17:43:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/11 22:59:19 by ngoulios         ###   ########.fr       */
+/*   Created: 2024/05/22 12:19:05 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/07/11 22:52:44 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_line(int fd, char *backup);
+static char	*read_line(int fd, char *buf, char *backup);
 static char	*extract(char *line);
-static char *join_and_free(char *s1, char *s2);
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
+	char		*buffer;
 	char		*line;
 	static char	*backup;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd <= 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-
-	line = read_line(fd, backup);
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	line = read_line(fd, buffer, backup);
+	free(buffer);
 	if (!line)
 		return (NULL);
-
 	backup = extract(line);
 	return (line);
 }
 
-static char	*read_line(int fd, char *backup)
+static char	*read_line(int fd, char *buffer, char *backup)
 {
-	char	*buffer;
-	char	*temp;
 	int		bytes_read;
+	char	*temp;
 
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-    while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+	bytes_read = 1;
+	while (bytes_read > 0)
 	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
+			return (0);
+		else if (bytes_read == 0)
+			break ;
 		buffer[bytes_read] = '\0';
 		if (!backup)
 			backup = ft_strdup("");
-		temp = join_and_free(backup, buffer);
-		if (!temp)
-		{
-			free(buffer);
+		temp = backup;
+		backup = (ft_strjoin(temp, buffer));
+		if (!backup)
 			return (NULL);
-		}
-		backup = temp;
-		if (ft_strchr(backup, '\n'))
-			break;
-	}
-	free(buffer);
-	if (bytes_read < 0)
-	{
-		free(backup);
-		backup = NULL;
-		return (NULL);
+		if (ft_strchr(buffer, '\n'))
+			break ;
 	}
 	return (backup);
 }
@@ -69,28 +63,22 @@ static char	*read_line(int fd, char *backup)
 static char	*extract(char *line)
 {
 	int		i;
-	char	*remainder;
+	char	*temp;
 
 	i = 0;
 	while (line[i] && line[i] != '\n')
+	{
 		i++;
-
-	if (!line[i])
+	}
+	if (line[i] == 0)
 		return (NULL);
-
-	remainder = ft_substr(line, i + 1, ft_strlen(line) - i - 1);
-	if (!remainder)
+	temp = ft_substr(line, i + 1, ft_strlen(line) - 1);
+	if (!temp)
+	{
+		free (temp);
+		temp = NULL;
 		return (NULL);
-
+	}
 	line[i + 1] = '\0';
-	return (remainder);
-}
-
-static char *join_and_free(char *s1, char *s2)
-{
-	char *joined;
-
-	joined = ft_strjoin(s1, s2);
-	free(s1);
-	return (joined);
+	return (temp);
 }
