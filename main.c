@@ -2,5 +2,5 @@
 int main()
 {
     int fd;
-    fd = open("text.txt", O_RDONLY);
+    fd = open("text1.txt", O_RDONLY);
 }
