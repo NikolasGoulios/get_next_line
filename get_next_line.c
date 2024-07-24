@@ -6,7 +6,11 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:43:54 by ngoulios          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/07/24 13:01:27 by ngoulios         ###   ########.fr       */
+=======
+/*   Updated: 2024/07/24 13:22:27 by ngoulios         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +74,21 @@ static char	*extract(char *line)
 	char	*remainder;
 
 	i = 0;
-	while (line[i] && line[i] != '\n')
-		i++;
-
-	if (!line[i])
+	if (!line)
 		return (NULL);
-
-	remainder = ft_substr(line, i + 1, ft_strlen(line) - i - 1);
+	while (line[i] != '\n')
+		i++;
+	if (line[i + 1] == '\0')
+		return (NULL);
+	remainder = ft_substr(line, i + 1, ft_strlen(line));
 	if (!remainder)
 		return (NULL);
+<<<<<<< HEAD
 	printf("remainder:%s", remainder);
 	line[i + 1] = '\0';
+=======
+	//free(line);
+>>>>>>> refs/remotes/origin/main
 	return (remainder);
 }
 static char *join_and_free(char *s1, char *s2)
