@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:43:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/24 13:33:38 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/24 13:38:16 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ static char	*extract(char *line)
 	remainder = ft_substr(line, i + 1, ft_strlen(line));
 	if (!remainder)
 		return (NULL);
-	//free(line);
 	return (remainder);
 }
 static char *join_and_free(char *s1, char *s2)
