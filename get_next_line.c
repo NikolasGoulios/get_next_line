@@ -6,13 +6,14 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:43:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/24 13:38:16 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:19:39 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_line(int fd, char *backup);
+static char	*read_from_fd(int fd, char *backup);
+static char	*update_backup(char *backup, char *buffer);
 static char	*extract(char *line);
 static char *join_and_free(char *s1, char *s2);
 
@@ -24,46 +25,54 @@ char *get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 
-	line = read_line(fd, backup);
+	line = read_from_fd(fd, backup);
 	if (!line)
 		return (NULL);
 
 	backup = extract(line);
 	return (line);
 }
-static char	*read_line(int fd, char *backup)
+
+static char	*read_from_fd(int fd, char *backup)
 {
 	char	*buffer;
-	char	*temp;
 	int		bytes_read;
 
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-    while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[bytes_read] = '\0';
-		if (!backup)
-			backup = ft_strdup("");
-		temp = join_and_free(backup, buffer);
-		if (!temp)
-		{
-			free(buffer);
-			return (NULL);
-		}
-		backup = temp;
-		if (ft_strchr(backup, '\n'))
+		backup = update_backup(backup, buffer);
+		if (!backup || ft_strchr(backup, '\n'))
 			break;
 	}
 	free(buffer);
 	if (bytes_read < 0)
 	{
 		free(backup);
-		backup = NULL;
 		return (NULL);
 	}
 	return (backup);
 }
+
+static char	*update_backup(char *backup, char *buffer)
+{
+	char	*temp;
+
+	if (!backup)
+		backup = ft_strdup("");
+	temp = join_and_free(backup, buffer);
+	if (!temp)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	backup = temp;
+	return (backup);
+}
+
 static char	*extract(char *line)
 {
 	int		i;
@@ -72,15 +81,17 @@ static char	*extract(char *line)
 	i = 0;
 	if (!line)
 		return (NULL);
-	while (line[i] != '\n')
+	while (line[i] && line[i] != '\n')
 		i++;
-	if (line[i + 1] == '\0')
+	if (line[i] == '\0' || line[i + 1] == '\0')
 		return (NULL);
-	remainder = ft_substr(line, i + 1, ft_strlen(line));
+	remainder = ft_substr(line, i + 1, ft_strlen(line) - i - 1);
 	if (!remainder)
 		return (NULL);
+	line[i + 1] = '\0';
 	return (remainder);
 }
+
 static char *join_and_free(char *s1, char *s2)
 {
 	char *joined;
