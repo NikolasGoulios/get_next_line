@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:43:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/11 23:06:25 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/24 11:51:23 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char *get_next_line(int fd)
 	backup = extract(line);
 	return (line);
 }
-
 static char	*read_line(int fd, char *backup)
 {
 	char	*buffer;
@@ -65,7 +64,6 @@ static char	*read_line(int fd, char *backup)
 	}
 	return (backup);
 }
-
 static char	*extract(char *line)
 {
 	int		i;
@@ -85,7 +83,6 @@ static char	*extract(char *line)
 	line[i + 1] = '\0';
 	return (remainder);
 }
-
 static char *join_and_free(char *s1, char *s2)
 {
 	char *joined;
