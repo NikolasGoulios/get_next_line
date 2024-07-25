@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:43:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/25 15:10:25 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/07/25 16:07:10 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-
 	line = read_from_fd(fd, backup);
 	if (!line)
 		return (NULL);
-
 	backup = extract(line);
 	return (line);
 }
@@ -51,8 +49,9 @@ static char	*read_from_fd(int fd, char *backup)
 	free(buffer);
 	if (bytes_read < 0)
 	{
-		free(backup);
-		return (NULL);
+		//free(backup);  DELETE THAT ONE FIND A WAY TO FREE THE STATIC BUFFER WITHOUT FUCKING IT UP
+		backup = NULL;
+		return(NULL);
 	}
 	return (backup);
 }
@@ -91,7 +90,6 @@ static char	*extract(char *line)
 	line[i + 1] = '\0';
 	return (remainder);
 }
-
 static char *join_and_free(char *s1, char *s2)
 {
 	char *joined;
