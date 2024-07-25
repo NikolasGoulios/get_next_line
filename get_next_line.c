@@ -6,7 +6,11 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:43:54 by ngoulios          #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2024/07/25 15:07:49 by ngoulios         ###   ########.fr       */
+=======
+/*   Updated: 2024/07/25 15:06:27 by ngoulios         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
