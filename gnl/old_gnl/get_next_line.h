@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/30 21:14:30 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/30 21:25:06 by ngoulios         ###   ########.fr       */
+/*   Created: 2024/05/19 19:45:15 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/07/24 14:27:38 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 # endif
 
 # include <stdlib.h>
-# include <sys/types.h> // remove before push
-# include <sys/uio.h> // remove before push
 # include <unistd.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <limits.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *string, int searchedChar);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t elementCount, size_t elementSize);
-size_t	ft_strlen(const char *theString);
-
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(const char *s1, const char *s2);
+size_t	ft_strlen(const char *s);
 #endif

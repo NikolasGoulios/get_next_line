@@ -5,105 +5,128 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/09 17:43:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/26 10:56:35 by ngoulios         ###   ########.fr       */
+/*   Created: 2024/07/30 21:14:43 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/07/31 01:58:53 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_from_fd(int fd, char *backup);
-static char	*update_backup(char *backup, char *buffer);
-static char	*extract(char *line);
-static char *join_and_free(char *s1, char *s2);
+char    *ft_free(char *buffer, char *buf);
+char    *read_file(int fd, char *res);
+char    *ft_next(char *buffer);
+char    *ft_line(char *buffer);
 
-char *get_next_line(int fd)
+char    *get_next_line(int fd)
 {
-	char		*line;
-	static char	*backup;
+    static char *buffer;
+    char        *line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	line = read_from_fd(fd, backup);
-	//if (!line)
-		//return (NULL);
-	if (!line)
-	{
-		if (backup) // Free the backup if no line is read and backup is not NULL
-		{
-			free(backup);
-			backup = NULL;
-		}
-		return (NULL);
-	}
-	backup = extract(line);
-	return (line);
+    if (fd < 0 || BUFFER_SIZE <= 0)
+    {
+        if (buffer) //Free buffer on initial read error
+        {
+            free(buffer);
+            //buffer = NULL;
+        }
+        return (NULL);
+    }
+    buffer = read_file(fd, buffer);
+    if (!buffer)
+        return (NULL);
+    line = ft_line(buffer);
+    buffer = ft_next(buffer);
+    return (line);
 }
 
-static char	*read_from_fd(int fd, char *backup)
+// delete line find
+char    *ft_next(char *buffer)
 {
-	char	*buffer;
-	int		bytes_read;
+    int     i;
+    int     j;
+    char    *line;
 
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
-	{
-		buffer[bytes_read] = '\0';
-		backup = update_backup(backup, buffer);
-		if (!backup || ft_strchr(backup, '\n'))
-			break;
-	}
-	free(buffer);
-	if (bytes_read < 0)
-	{
-		//free(backup);
-		backup = NULL;
-		return(NULL);
-	}
-	return (backup);
+    i = 0;
+    // find len of first line
+    while (buffer[i] && buffer[i] != '\n')
+        i++;
+    // if eol == \0 return NULL
+    if (!buffer[i])
+    {
+        free(buffer);
+        return (NULL);
+    }
+    // len of file - len of firstline + 1
+    line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+    i++;
+    j = 0;
+    // line == buffer
+    while (buffer[i])
+        line[j++] = buffer[i++];
+    free(buffer);
+    return (line);
 }
 
-static char	*update_backup(char *backup, char *buffer)
+// take line for return
+char    *ft_line(char *buffer)
 {
-	char	*temp;
+    char    *line;
+    int     i;
 
-	if (!backup)
-		backup = ft_strdup("");
-	temp = join_and_free(backup, buffer);
-	if (!temp)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	backup = temp;
-	return (backup);
+    i = 0;
+    // if no line return NULL
+    if (!buffer[i])
+        return (NULL);
+    // go to the eol
+    while (buffer[i] && buffer[i] != '\n')
+        i++;
+    // malloc to eol
+    line = ft_calloc(i + 2, sizeof(char));
+    i = 0;
+    // line = buffer
+    while (buffer[i] && buffer[i] != '\n')
+    {
+        line[i] = buffer[i];
+        i++;
+    }
+    // if eol is \0 or \n, replace eol by \n
+    if (buffer[i] && buffer[i] == '\n')
+        line[i++] = '\n';
+    return (line);
 }
 
-static char	*extract(char *line)
+char    *read_file(int fd, char *res)
 {
-	int		i;
-	char	*remainder;
+    char    *buffer;
+    int     byte_read;
 
-	i = 0;
-	if (!line)
-		return (NULL);
-	while (line[i] && line[i] != '\n')
-		i++;
-	if (line[i] == '\0' || line[i + 1] == '\0')
-		return (NULL);
-	remainder = ft_substr(line, i + 1, ft_strlen(line) - i - 1);
-	if (!remainder)
-		return (NULL);
-	line[i + 1] = '\0';
-	return (remainder);
+    if (!res)
+        res = ft_calloc(1, 1);
+    buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+    byte_read = 1;
+    while (byte_read > 0)
+    {
+        byte_read = read(fd, buffer, BUFFER_SIZE);
+        if (byte_read < 0) // or -1 
+        {
+            free(buffer);
+            free(res); //Free res on read error
+            return (NULL);
+        }
+        buffer[byte_read] = 0;
+        res = ft_free(res, buffer);
+        if (ft_strchr(buffer, '\n'))
+            break ;
+    }
+    free(buffer);
+    return (res);
 }
-static char *join_and_free(char *s1, char *s2)
+// join and free
+char    *ft_free(char *buffer, char *buf)
 {
-	char *joined;
+    char    *temp;
 
-	joined = ft_strjoin(s1, s2);
-	free(s1);
-	return (joined);
+    temp = ft_strjoin(buffer, buf);
+    free(buffer);
+    return (temp);
 }
