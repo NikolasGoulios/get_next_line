@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:21 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/31 01:53:52 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:36:32 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,52 +33,48 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (newstr);
 }
 
-char	*ft_strchr(const char *string, int searchedChar )
+char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
+	unsigned char	lc ;
 
-	str = (char *)string;
-	while (*str != searchedChar && *str != 0)
-		str++;
-	if (*str == searchedChar)
-		return (str);
-	else
-		return (NULL);
+	lc = (unsigned char)c;
+	while (*s)
+	{
+		if (*s == lc)
+			return ((char *) s);
+		s++;
+	}
+	if (lc == '\0')
+		return ((char *) s);
+	return (0);
 }
 
-/*void	ft_bzero(void *s, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*str;
-	size_t	i;
+	unsigned char	*pt;
 
-	str = (char *)s;
-	i = 0;
-	while (i < n)
+	pt = (unsigned char *) b;
+	while (len > 0)
 	{
-		str[i] = '\0';
-		i++;
+		*(pt++) = (unsigned char) c;
+		len--;
 	}
-}*/
-void	*ft_calloc(size_t count, size_t size)
-{
-	unsigned char	*tmp;
-	size_t			i;
-	size_t			total;
-
-	i = 0;
-	if (size != 0 && count > (SIZE_MAX / size))
-		return (NULL);
-	total = count * size;
-	tmp = malloc(total);
-	if (!tmp)
-		return (NULL);
-	while (i < total)
-	{
-		tmp[i++] = 0;
-	}
-	return (tmp);
+	return (b);
 }
+void    *ft_calloc(size_t count, size_t size)
+{
+    void    *tmp;
+    size_t  total;
 
+    if (size != 0 && count > (SIZE_MAX / size))
+        return (NULL);
+    total = count * size;
+    tmp = malloc(total);
+    if (!tmp)
+        return (NULL);
+    ft_memset(tmp, 0, total);
+    return (tmp);
+}
 size_t	ft_strlen(const char *s)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:30 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/31 01:41:40 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:30:27 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@
 
 # include <stdlib.h>
 #include <limits.h>
-# include <sys/types.h> // remove before push
-# include <sys/uio.h> // remove before push
 # include <unistd.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *string, int searchedChar);
+char	*ft_strchr(const char *s, int c);
 void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t elementCount, size_t elementSize);
+void	*ft_memset(void *b, int c, size_t len);
+void	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlen(const char *theString);
 
 #endif

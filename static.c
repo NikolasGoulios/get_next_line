@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:27:32 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/05/27 13:51:08 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:34:34 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,5 @@ int main()
 	fd = open("text.txt", O_RDONLY -O_CREAT);
 	return 0;
 }*/ 
+
+// cc -Wall -Wextra -Werror get_next_line.c get_next_line_utils.c get_next_line.h main.c -D BUFFER_SIZE=10

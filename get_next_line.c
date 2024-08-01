@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:43 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/07/31 01:58:53 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:33:14 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char    *get_next_line(int fd)
 
     if (fd < 0 || BUFFER_SIZE <= 0)
     {
-        if (buffer) //Free buffer on initial read error
+        if (buffer)
         {
             free(buffer);
-            //buffer = NULL;
+            buffer = NULL;
         }
         return (NULL);
     }
@@ -39,7 +39,6 @@ char    *get_next_line(int fd)
     return (line);
 }
 
-// delete line find
 char    *ft_next(char *buffer)
 {
     int     i;
@@ -47,49 +46,39 @@ char    *ft_next(char *buffer)
     char    *line;
 
     i = 0;
-    // find len of first line
+    j = 0;
     while (buffer[i] && buffer[i] != '\n')
         i++;
-    // if eol == \0 return NULL
     if (!buffer[i])
     {
         free(buffer);
         return (NULL);
     }
-    // len of file - len of firstline + 1
     line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
     i++;
-    j = 0;
-    // line == buffer
     while (buffer[i])
         line[j++] = buffer[i++];
     free(buffer);
     return (line);
 }
 
-// take line for return
 char    *ft_line(char *buffer)
 {
     char    *line;
     int     i;
 
     i = 0;
-    // if no line return NULL
     if (!buffer[i])
         return (NULL);
-    // go to the eol
     while (buffer[i] && buffer[i] != '\n')
         i++;
-    // malloc to eol
     line = ft_calloc(i + 2, sizeof(char));
     i = 0;
-    // line = buffer
     while (buffer[i] && buffer[i] != '\n')
     {
         line[i] = buffer[i];
         i++;
     }
-    // if eol is \0 or \n, replace eol by \n
     if (buffer[i] && buffer[i] == '\n')
         line[i++] = '\n';
     return (line);
@@ -107,10 +96,10 @@ char    *read_file(int fd, char *res)
     while (byte_read > 0)
     {
         byte_read = read(fd, buffer, BUFFER_SIZE);
-        if (byte_read < 0) // or -1 
+        if (byte_read < 0)
         {
             free(buffer);
-            free(res); //Free res on read error
+            free(res);
             return (NULL);
         }
         buffer[byte_read] = 0;
@@ -121,7 +110,6 @@ char    *read_file(int fd, char *res)
     free(buffer);
     return (res);
 }
-// join and free
 char    *ft_free(char *buffer, char *buf)
 {
     char    *temp;
