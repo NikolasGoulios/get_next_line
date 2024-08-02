@@ -2,9 +2,9 @@
 #include <unistd.h>   // For close
 #include <stdio.h>    // For printf, perror
 #include <stdlib.h>   // For exit
-#include "get_next_line.h" // Include the header for get_next_line
+#include "get_next_line.h" 
 
-int main(int argc, char **argv)
+/*int main(int argc, char **argv)
 {
     int     fd;
     char    *line;
@@ -35,4 +35,72 @@ int main(int argc, char **argv)
     }
 
     return (0);
+}*/
+
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+char *get_next_line(int fd);
+
+int main(int argc, char **argv)
+{
+    int fd, ret, line_count;
+    char *line = NULL;
+
+    line_count = 1;
+    ret = 0;
+
+    if (argc == 2)
+    {
+        fd = open(argv[1], O_RDONLY);
+        if (fd == -1)
+        {
+            perror("Error opening file");
+            return 1;
+        }
+        while ((line = get_next_line(fd)) != NULL)
+        {
+            ret = 1; 
+            printf("[Return: %d] Line #%d: %s\n", ret, line_count, line);
+            line_count++;
+            free(line);
+        }
+        if (line == NULL && ret == -1)
+        {
+            printf("-----------\nAn error happened\n");
+        }
+        else
+        {
+            printf("-----------\nEOF has been reached\n");
+        }
+        close(fd);
+    }
+    else if (argc == 1)
+    {
+        while ((line = get_next_line(0)) != NULL)
+        {
+            ret = 1; 
+            printf("[Return: %d] Line #%d: %s\n", ret, line_count, line);
+            line_count++;
+            free(line);
+        }
+        if (line == NULL && ret == -1)
+        {
+            printf("\nAn error happened\n");
+        }
+        else
+        {
+            printf("\nEOF has been reached\n");
+        }
+    }
+    else
+    {
+        printf("Usage: %s [filename]\n", argv[0]);
+        return 1;
+    }
+
+    return 0;
 }
