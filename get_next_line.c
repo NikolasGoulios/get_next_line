@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:43 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/01 12:33:14 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:18:12 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char    *get_next_line(int fd)
 {
     static char *buffer;
     char        *line;
-
+    
     if (fd < 0 || BUFFER_SIZE <= 0)
     {
         if (buffer)
@@ -54,7 +54,7 @@ char    *ft_next(char *buffer)
         free(buffer);
         return (NULL);
     }
-    line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+    line = ft_calloc((ft_strlen(buffer) - i), sizeof(char));
     i++;
     while (buffer[i])
         line[j++] = buffer[i++];
@@ -81,6 +81,7 @@ char    *ft_line(char *buffer)
     }
     if (buffer[i] && buffer[i] == '\n')
         line[i++] = '\n';
+    line[i] = '\0';
     return (line);
 }
 
@@ -115,6 +116,11 @@ char    *ft_free(char *buffer, char *buf)
     char    *temp;
 
     temp = ft_strjoin(buffer, buf);
+    if (!temp) // Check allocation success
+    {
+        free(buffer);
+        return (NULL);
+    }
     free(buffer);
     return (temp);
 }

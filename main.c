@@ -2,6 +2,7 @@
 #include <unistd.h>   // For close
 #include <stdio.h>    // For printf, perror
 #include <stdlib.h>   // For exit
+#include <limits.h>
 #include "get_next_line.h" 
 
 /*int main(int argc, char **argv)
@@ -37,13 +38,8 @@
     return (0);
 }*/
 
-#include <limits.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
 
-char *get_next_line(int fd);
+
 
 int main(int argc, char **argv)
 {
