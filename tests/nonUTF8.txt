@@ -1,0 +1,1 @@
+Line with special characters: \t \b \f \r \v
