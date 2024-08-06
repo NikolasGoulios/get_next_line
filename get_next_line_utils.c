@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:21 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/01 12:36:32 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/06 13:03:14 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
-void    *ft_calloc(size_t count, size_t size)
+void    *ft_calloc(size_t count, size_t size) // Cheange the SIZE_MAX before push 
 {
     void    *tmp;
     size_t  total;

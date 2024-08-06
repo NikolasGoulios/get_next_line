@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 15:37:13 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/05 15:37:18 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/06 12:32:00 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # endif
 
 # include <stdlib.h>
+#include <stdint.h> // for size_max delete this and change size_max
 #include <limits.h>
 # include <unistd.h>
 
