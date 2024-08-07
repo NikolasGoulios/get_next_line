@@ -6,13 +6,14 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:21 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/07 14:53:51 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/07 15:30:45 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "get_next_line.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
