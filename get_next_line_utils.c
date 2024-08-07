@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:21 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/06 13:03:14 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:25:15 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,21 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
-void    *ft_calloc(size_t count, size_t size) // Cheange the SIZE_MAX before push 
+void	*ft_calloc(size_t count, size_t size)
 {
-    void    *tmp;
-    size_t  total;
+	unsigned char	*tmp;
+	size_t			i;
+	size_t			total;
 
-    if (size != 0 && count > (SIZE_MAX / size))
-        return (NULL);
-    total = count * size;
-    tmp = malloc(total);
-    if (!tmp)
-        return (NULL);
-    ft_memset(tmp, 0, total);
-    return (tmp);
+	i = 0;
+	total = count * size;
+	if (total > 0 && size > 0 && total >= (18446744073709551615UL) / size)
+		return (NULL);
+	tmp = malloc(total);
+	if (!tmp)
+		return (NULL);
+	ft_memset(tmp, 0, total);
+	return (tmp);
 }
 size_t	ft_strlen(const char *s)
 {
