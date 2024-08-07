@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:21 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/07 13:25:15 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:59:39 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
+
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*tmp;
@@ -77,6 +78,7 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_memset(tmp, 0, total);
 	return (tmp);
 }
+
 size_t	ft_strlen(const char *s)
 {
 	int	i;
