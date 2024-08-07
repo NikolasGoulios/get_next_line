@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:21 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/07 13:59:39 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:53:51 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ void	*ft_memset(void *b, int c, size_t len)
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*tmp;
-	size_t			i;
 	size_t			total;
 
-	i = 0;
 	total = count * size;
 	if (total > 0 && size > 0 && total >= (18446744073709551615UL) / size)
 		return (NULL);
