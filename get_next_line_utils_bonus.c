@@ -6,13 +6,13 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 20:51:50 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/02 20:51:53 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/08 13:57:48 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -61,20 +61,22 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
-void    *ft_calloc(size_t count, size_t size)
-{
-    void    *tmp;
-    size_t  total;
 
-    if (size != 0 && count > (SIZE_MAX / size))
-        return (NULL);
-    total = count * size;
-    tmp = malloc(total);
-    if (!tmp)
-        return (NULL);
-    ft_memset(tmp, 0, total);
-    return (tmp);
+void	*ft_calloc(size_t count, size_t size)
+{
+	unsigned char	*tmp;
+	size_t			total;
+
+	total = count * size;
+	if (total > 0 && size > 0 && total >= (18446744073709551615UL) / size)
+		return (NULL);
+	tmp = malloc(total);
+	if (!tmp)
+		return (NULL);
+	ft_memset(tmp, 0, total);
+	return (tmp);
 }
+
 size_t	ft_strlen(const char *s)
 {
 	int	i;
