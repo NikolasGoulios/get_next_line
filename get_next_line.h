@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 15:37:13 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/07 15:35:19 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:10:27 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
-void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlen(const char *s);
