@@ -1,6 +1,3 @@
-Thats a read me file that will be published with my project. But i dont really know how to do it. Lets find out tho.
-
-
 Get Next Line 
 
 This is a personal project focused on implementing a function to read and return the next line from a file or input stream. The primary goal is to handle varying input lengths and ensure efficiency and robustness in reading data line by line.
