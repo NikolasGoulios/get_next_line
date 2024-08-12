@@ -6,10 +6,9 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:21 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/07 15:30:45 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/10 17:42:26 by NikolasGoulio    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
