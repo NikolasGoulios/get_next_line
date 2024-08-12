@@ -1,4 +1,4 @@
-Name: 			get_next_line
+**Name: 			get_next_line
 Prototype:		char *get_next_line(int fd);
 Parameters:		fd —> file descriptor
 Return Value: 	Read line —> correct behaviour
@@ -6,7 +6,8 @@ Return Value: 	Read line —> correct behaviour
 Ext.Functions: 	read, malloc, free
 Turn in Files: 	1. get_next_line.c
 				2. get_next_line_utils.c,
-				3. get_next_line.h
+				3. get_next_line.h**
+** Get Next Line **
 
 This project is about programming a function that returns a line from a file
 descriptor. And what does that mean? Lets find out.
