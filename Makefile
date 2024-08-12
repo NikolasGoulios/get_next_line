@@ -6,14 +6,14 @@
 #    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 15:21:08 by ngoulios          #+#    #+#              #
-#    Updated: 2024/08/12 10:21:38 by ngoulios         ###   ########.fr        #
+#    Updated: 2024/08/12 15:26:04 by ngoulios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = get_next_line
 CC = cc 
-FLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=1
+FLAGS = -Wall -Werror -Wextra -fsanitize=address
 
 SRC = get_next_line_utils.c get_next_line.c main.c
 
