@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 20:51:07 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/08 14:10:43 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/12 11:22:47 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@
 #  define BUFFER_SIZE 16
 # endif
 
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
+
 # include <stdlib.h>
 # include <unistd.h>
-# include <sys/syslimits.h>
+# include <limits.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
