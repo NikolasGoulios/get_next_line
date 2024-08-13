@@ -6,14 +6,14 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 21:14:43 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/07 15:30:01 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/13 15:03:07 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_free(char *buffer, char *buf);
 char	*read_file(int fd, char *res);
+char	*ft_free(char *buffer, char *buf);
 char	*ft_next(char *buffer);
 char	*ft_line(char *buffer);
 
