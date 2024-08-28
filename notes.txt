@@ -16,25 +16,28 @@ int main()
 
 
 
-				--- FLAGS FOR CHECKS AND MEMMORY LEAKS ---  
+							--- FLAGS ---  
 
 cc -Wall -Wextra -Werror get_next_line.c get_next_line_utils.c get_next_line.h main.c (-D BUFFER_SIZE=10)
 
 							--- LEAKS ---
 
-//valgrind --leak-check=full ./your_program (LEAKS FOR LINUX)
+valgrind --leak-check=full ./your_program (LEAKS FOR LINUX) 
+or 
+valgri ./your_program
 
-//-fsanitize=address (LEAKS FOR MAC)
+-fsanitize=address (LEAKS FOR MAC)
 
-//-D BUFFER_SIZE=100000000 it works super slow, -D BUFFER_SIZE=1000000000 it doesnt work due to memmory.
+-D BUFFER_SIZE=100000000 it works super slow, 
+-D BUFFER_SIZE=1000000000 it doesnt work due to memmory.
 
 
 
-							--- DEFENCE PREP ---
+						 --- DEFENCE PREP ---
 
 *QUESTIONS*
 
-1.	How does your function handle diles with no new line at the end?
+1.	How does your function handle files with no new line at the end?
 2.	What happens if read() retruns an error ? How does your function respond ?
 3.	Explain why you need static variables for this implementation.
 4.	What would happen if BUFFER_SIZE is set to a very small or very large 
@@ -100,11 +103,15 @@ is chosen. Ensures safety, starts with a known inviroment of 0s.
 
 13. Function might behave unpredictably if the BS is changed between function calls. 
 
-14. 
+14. When fd is invalid or BUFFER_SIZE in non-possitive the function cannot perform its tasks.
+In that case any allocated memmory is being freed and buffer is being reset to avoid any 
+dangling pointers or memory leaks. Thats the correct behavior.
 
-15.
+15. To make things more modular and redable. Each function has its clear responsibility and
+maintenance can be very easy.
 
-16.
+16. The function will keep reading and appending to buffer until the entire line is read, until the 
+entire line will be returned by the ft_line.
 
 
 

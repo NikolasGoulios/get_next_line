@@ -39,7 +39,7 @@ This way you will get to be more comfortable with functions that opening and rea
 - Implement Static Variables: Modify the program to use a static variable to keep track of the buffer between function calls.
 
 ## 🛠 Skills
-C 
+C  , Makefile
 
 
 ## FAQ
