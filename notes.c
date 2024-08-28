@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:27:32 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/28 16:50:01 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/28 17:03:25 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,15 @@ cause there is no data to return.
 \0 and we will ensure that there will be no garbage data in between. Malloc allocates without initializing it thats why calloc 
 is chosen. Ensures safety, starts with a known inviroment of 0s.
 
-12. 
+12. Needs more understanding tbh.
+
+13. Function might behave unpredictably if the BS is changed between function calls. 
+
+14. 
 
 
 
 */
  
+
+ // ADD FLOW CHART IN THE GITHUB FILE OR AND EMBEDED IT IN README
