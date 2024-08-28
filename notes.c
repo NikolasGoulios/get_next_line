@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:27:32 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/08/28 15:38:20 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:57:12 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@ cc -Wall -Wextra -Werror get_next_line.c get_next_line_utils.c get_next_line.h m
 
 *ASWERS*
 
+1. In the final read() if the EOF is reached the function will return whatever its 
+left in the buffer as last line even if its ends with new line.
+
+2. If this is the case of an error and read() returned -1 then the implementation 
+will free any allocated memory and returns NULL to indicate an error. If read() returns error
+then read_file will return an error same as the big function gnl.
+
+3. Static Variable in C retain their value accross multiple function calls. 
 
 */
  
