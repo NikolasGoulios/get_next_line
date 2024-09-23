@@ -12,14 +12,13 @@ int main(int argc, char **argv)
 
     if (argc > 1)
     {
-        // Loop through all provided files
         for (int i = 1; i < argc; i++)
         {
             fd = open(argv[i], O_RDONLY);
             if (fd == -1)
             {
                 perror("Error opening file");
-                continue; // Skip to the next file
+                continue; 
             }
 
             line_count = 1;
@@ -27,7 +26,6 @@ int main(int argc, char **argv)
 
             printf("Reading from file: %s\n", argv[i]);
 
-            // Read lines from the file
             while ((line = get_next_line(fd)) != NULL)
             {
                 ret = 1;
@@ -50,7 +48,6 @@ int main(int argc, char **argv)
     }
     else
     {
-        // Read from standard input if no files are provided
         line_count = 1;
         ret = 0;
 
